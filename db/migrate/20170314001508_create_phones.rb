@@ -3,7 +3,8 @@ class CreatePhones < ActiveRecord::Migration[5.0]
     create_table :phones do |t|
       t.string :name
       t.string :number
-      t.string :City
+      t.string :city
+      t.integer :user_id
 
       t.timestamps
     end
