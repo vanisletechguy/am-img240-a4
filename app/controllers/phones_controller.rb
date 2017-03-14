@@ -1,6 +1,6 @@
 class PhonesController < ApplicationController
   before_action :set_phone, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /phones
   # GET /phones.json
   def index
@@ -19,13 +19,16 @@ class PhonesController < ApplicationController
 
   # GET /phones/1/edit
   def edit
+    @article = Article.find(params[:id])
+    authorize @article
   end
 
   # POST /phones
   # POST /phones.json
   def create
     @phone = Phone.new(phone_params)
-
+    user_id = current_user.id
+    @phone.user_id = user_id
     respond_to do |format|
       if @phone.save
         format.html { redirect_to @phone, notice: 'Phone was successfully created.' }
@@ -54,6 +57,7 @@ class PhonesController < ApplicationController
   # DELETE /phones/1
   # DELETE /phones/1.json
   def destroy
+    authorize @phone
     @phone.destroy
     respond_to do |format|
       format.html { redirect_to phones_url, notice: 'Phone was successfully destroyed.' }
