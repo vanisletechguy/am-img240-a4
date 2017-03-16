@@ -6,7 +6,7 @@ class PhonePolicy < ApplicationPolicy
   end
 
   def edit?
-    false
+    user.admin == true || record.user_id == user.id
   end
 
   def destroy?

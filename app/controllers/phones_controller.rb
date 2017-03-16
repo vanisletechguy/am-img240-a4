@@ -19,8 +19,8 @@ class PhonesController < ApplicationController
 
   # GET /phones/1/edit
   def edit
-    @article = Article.find(params[:id])
-    authorize @article
+    @phone = Phone.find(params[:id])
+    authorize @phone
   end
 
   # POST /phones
@@ -73,6 +73,6 @@ class PhonesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_params
-      params.require(:phone).permit(:name, :number, :City)
+      params.require(:phone).permit(:name, :number, :city, :user_id)
     end
 end

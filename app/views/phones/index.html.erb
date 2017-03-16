@@ -2,7 +2,7 @@
 
 <h1>Phones</h1>
 
-<table>
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= phone.name %></td>
         <td><%= phone.number %></td>
-        <td><%= phone.City %></td>
+        <td><%= phone.city %></td>
         <td><%= link_to 'Show', phone %></td>
         <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
         <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
