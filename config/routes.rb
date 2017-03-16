@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  get 'generator/generate_data'
   root 'welcome#index'
   resources :phones
   devise_for :users
